@@ -14,7 +14,7 @@
     <h1>Product Catalog</h1>
     
     <?php
-    $host = '192.168.56.10';
+    $host = '127.0.0.1';
     $dbname = 'webapp';
     $username = 'webuser';
     $password = 'webpass';

@@ -1,6 +1,6 @@
 CREATE DATABASE webapp;
-CREATE USER 'webuser'@'192.168.56.11' IDENTIFIED BY 'webpass';
-GRANT SELECT ON webapp.* TO 'webuser'@'192.168.56.11';
+CREATE USER 'webuser'@'192.168.56.12' IDENTIFIED BY 'webpass';
+GRANT SELECT ON webapp.* TO 'webuser'@'192.168.56.12';
 FLUSH PRIVILEGES;
 
 USE webapp;
