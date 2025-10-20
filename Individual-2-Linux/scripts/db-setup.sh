@@ -18,6 +18,6 @@ systemctl restart mysql
 
 # Configure firewall (allow traffic only from web server)
 systemctl enable netfilter-persistent
-iptables -t filter -A INPUT -p tcp --dport 5606 -s 192.168.56.11 -j ACCEPT
-iptables -t filter -A INPUT -p tcp --dport 5606 -j DROP
+iptables -t filter -A INPUT -p tcp --dport 3306 -s 192.168.56.11 -j ACCEPT
+iptables -t filter -A INPUT -p tcp --dport 3306 -j DROP
 netfilter-persistent save
