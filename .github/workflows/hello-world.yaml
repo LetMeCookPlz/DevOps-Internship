@@ -1,0 +1,13 @@
+name: Hello World
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  print-hello-world:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print "Hello World" in the pipeline
+        run: echo "Hello World"
