@@ -1,0 +1,38 @@
+---
+- name: Configure EC2 instance to serve IMDSv2 metadata with Nginx
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - nginx
+          - python3
+          - python3-pip
+        state: present
+
+    - name: Install Python requests library
+      pip:
+        name: requests
+        executable: pip3
+
+    - name: Copy metadata script
+      copy:
+        src: metadata.py
+        dest: /usr/local/bin/metadata.py
+        mode: "0755"
+
+    - name: Run metadata script to generate HTML
+      command: python3 /usr/local/bin/metadata.py
+      changed_when: true
+
+    - name: Enable and restart nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
